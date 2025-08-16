@@ -1,4 +1,4 @@
-# Task Management Frontend
+# Task Management Web Application
 
 This is a full-stack Task Management web application with a **React + Vite frontend** and a **Node.js + Express backend**.  
 The backend uses **MongoDB** for persistence and **JWT-based authentication**.  
