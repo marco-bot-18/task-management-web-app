@@ -1,4 +1,4 @@
-# Task Manager Backend (Express + MongoDB)
+# Task Management Backend (Express + MongoDB)
 
 ## Quick start (local)
 1. Copy `.env.example` → `.env` and edit values.
