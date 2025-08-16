@@ -1,0 +1,55 @@
+name: CI Build
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+  workflow_dispatch:   # Allows you to run the workflow manually from GitHub UI
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    services:
+      mongo:
+        image: mongo:6.0
+        ports:
+          - 27017:27017
+        options: >-
+          --health-cmd "mongosh --eval 'db.adminCommand({ ping: 1 })'"
+          --health-interval=10s
+          --health-timeout=5s
+          --health-retries=5
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: 18
+
+      # Backend setup
+      - name: Install backend dependencies
+        run: |
+          cd task-manager-backend
+          npm install
+
+      - name: Build backend
+        run: |
+          cd task-manager-backend
+          npm run build || echo "No build step for backend"
+
+      # Frontend setup
+      - name: Install frontend dependencies
+        run: |
+          cd task-manager-frontend
+          npm install
+
+      - name: Build frontend
+        run: |
+          cd task-manager-frontend
+          npm run build
