@@ -35,7 +35,7 @@ jobs:
       - name: Install Backend Dependencies
         run: |
           cd task-manager-backend
-          npm ci
+          npm install
 
       - name: Run Linter
         run: |
