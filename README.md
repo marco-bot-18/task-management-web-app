@@ -24,12 +24,14 @@ cd <your-repo>
 ```
 ### 2. Backend Setup (Local Development)
  - `cd task-manager-backend`
+ - Copy .env.example → .env and edit values.
  - `npm install`
  - `npm run seed`
  - `npm run dev`
 
 ### 2. Frontend Setup (Local Development)
  - `cd task-manager-frontend`
+ - Copy .env.example → .env and edit values.
  - `npm install`
  - `npm run dev`
 
