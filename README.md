@@ -45,10 +45,24 @@ cd <your-repo>
   ### Authentication
   
   **Endpoints**
-  | Endpoint         | Method | Description                 | Request Body                                                        | Response (200)                                                     |
+  | Endpoint         | Method | Description                 | Request Body                                                        | Response                                                     |
   | ---------------- | ------ | --------------------------- | ------------------------------------------------------------------- | ------------------------------------------------------------------ |
-  | `/auth/register` | POST   | Register a new user         | `{ "username": "string", "email": "string", "password": "string" }` | `{ "message": "User registered successfully" }`                    |
-  | `/auth/login`    | POST   | Authenticate user & get JWT | `{ "email": "string", "password": "string" }`                       | `{ "token": "jwt_token_here" }`                                    |
+  | `/auth/register` | POST   | Register a new user         | `{ "username": "string", "email": "string", "password": "string" }` | `{
+    "token": "jwt_token_here",
+    "user": {
+        "id": "string",
+        "name": "string",
+        "email": "string"
+    }
+}`                    |
+  | `/auth/login`    | POST   | Authenticate user & get JWT | `{ "email": "string", "password": "string" }`                       | `{
+    "token": "jwt_token_here",
+    "user": {
+        "id": "string",
+        "name": "string",
+        "email": "string"
+    }
+}`                                    |
   | `/auth/me`       | GET    | Get logged-in user profile  | **Headers:** `{ "Authorization": "Bearer <token>" }`                | `{ "id": "123", "username": "john", "email": "john@example.com" }` |
 
   ### Tasks
