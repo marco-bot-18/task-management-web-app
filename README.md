@@ -23,18 +23,18 @@ git clone https://github.com/<your-username>/<your-repo>.git
 cd <your-repo>
 ```
 ### 2. Backend Setup (Local Development)
- - cd task-manager-backend
- - npm install
- - npm run seed
- - npm run dev
+ - `cd task-manager-backend`
+ - `npm install`
+ - `npm run seed`
+ - `npm run dev`
 
 ### 2. Frontend Setup (Local Development)
- - cd task-manager-frontend
- - npm install
- - npm run dev
+ - `cd task-manager-frontend`
+ - `npm install`
+ - `npm run dev`
 
 ### 3. Run via Docker
- - docker-compose up --build
+ - `docker-compose up --build`
 
 
 ## API Documentation
@@ -45,36 +45,22 @@ cd <your-repo>
   ### Authentication
   
   **Endpoints**
-  | Endpoint         | Method | Description                 | Request Body                                                        | Response                                                     |
-  | ---------------- | ------ | --------------------------- | ------------------------------------------------------------------- | ------------------------------------------------------------------ |
-  | `/auth/register` | POST   | Register a new user         | `{ "username": "string", "email": "string", "password": "string" }` | `{
-    "token": "jwt_token_here",
-    "user": {
-        "id": "string",
-        "name": "string",
-        "email": "string"
-    }
-}`                    |
-  | `/auth/login`    | POST   | Authenticate user & get JWT | `{ "email": "string", "password": "string" }`                       | `{
-    "token": "jwt_token_here",
-    "user": {
-        "id": "string",
-        "name": "string",
-        "email": "string"
-    }
-}`                                    |
-  | `/auth/me`       | GET    | Get logged-in user profile  | **Headers:** `{ "Authorization": "Bearer <token>" }`                | `{ "id": "123", "username": "john", "email": "john@example.com" }` |
+  | Endpoint         | Method | Description                 | Request Body                                                               | Headers                                  |
+  | ---------------- | ------ | --------------------------- | -------------------------------------------------------------------------- | ---------------------------------------- |
+  | `/auth/register` | POST   | Register a new user         | `{ "name": "John Doe", "email": "jdoe@email.com", "password": "pass123" }` | -                                        |
+  | `/auth/login`    | POST   | Authenticate user & get JWT | `{ "email": "jdoe@email.com", "password": "pass123" }`                     | -                                        |
+  | `/auth/me`       | GET    | Get logged-in user profile  | -                                                                          | `{ "Authorization": "Bearer <token>" }`  |
 
   ### Tasks
   **Endpoints**
-  | Method | Endpoint         | Description             | Body Example                                     |
-  | ------ | ---------------- | ----------------------- | ------------------------------------------------ |
-  | GET    | `/api/tasks`     | Get all tasks           | –                                                |
-  | GET    | `/api/tasks/:id` | Get task by ID          | –                                                |
-  | POST   | `/api/tasks`     | Create a new task       | `{ "title": "Learn React", "completed": false }` |
-  | PUT    | `/api/tasks/:id` | Update a task (replace) | `{ "title": "Learn Docker", "completed": true }` |
-  | PATCH  | `/api/tasks/:id` | Update partial fields   | `{ "completed": true }`                          |
-  | DELETE | `/api/tasks/:id` | Delete a task           | –                                                |
+  | Method | Endpoint         | Description             | Request Body                                                                                | Headers                                  |
+  | ------ | ---------------- | ----------------------- | ------------------------------------------------------------------------------------------- | ---------------------------------------- |
+  | GET    | `/api/tasks`     | Get all tasks           | –                                                                                           | `{ "Authorization": "Bearer <token>" }`  |
+  | GET    | `/api/tasks/:id` | Get task by ID          | –                                                                                           | `{ "Authorization": "Bearer <token>" }`  |
+  | POST   | `/api/tasks`     | Create a new task       | `{ "title": "Learn React", "description": "This is a test task", "status": "pending" }`     | `{ "Authorization": "Bearer <token>" }`  |
+  | PUT    | `/api/tasks/:id` | Update a task (replace) | `{ "title": "Learn React", "description": "This is a test task", "status": "in-progress" }` | `{ "Authorization": "Bearer <token>" }`  |
+  | PATCH  | `/api/tasks/:id` | Update partial fields   | `{ "title": "Learn React", "description": "This is a test task", "status": "completed" }`   | `{ "Authorization": "Bearer <token>" }`  |
+  | DELETE | `/api/tasks/:id` | Delete a task           | –                                                                                           | `{ "Authorization": "Bearer <token>" }`  |
 
 
 ## CI/CD Pipeline
