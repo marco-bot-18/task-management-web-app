@@ -3,7 +3,7 @@ import { useForm } from 'react-hook-form';
 import { z } from 'zod';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { useDispatch, useSelector } from 'react-redux';
-import { register as doRegister, fetchMe } from '../features/auth/authSlice';
+import { register as doRegister, fetchMe } from "../slicers/auth/authSlice";
 import { Link, useNavigate } from 'react-router-dom';
 
 const schema = z.object({

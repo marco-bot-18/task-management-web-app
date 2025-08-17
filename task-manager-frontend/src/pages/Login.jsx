@@ -1,7 +1,7 @@
 import { useEffect } from "react";
 import { useForm } from "react-hook-form";
 import { useDispatch, useSelector } from "react-redux";
-import { login, fetchMe } from "../features/auth/authSlice";
+import { login, fetchMe } from "../slicers/auth/authSlice";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 
 export default function Login() {

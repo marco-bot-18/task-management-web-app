@@ -8,7 +8,7 @@ import {
   fetchTasks,
   setFilters,
   updateTask,
-} from '../features/tasks/taskSlice';
+} from "../slicers/tasks/taskSlice";
 
 export default function Tasks() {
   const dispatch = useDispatch();
